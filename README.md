@@ -11,7 +11,8 @@ Drop a source video in, pick a target language, and the workflow:
 
 ## Files
 
-- `Lipdub-Gemini-API.json` — the workflow (ComfyUI **API** format).
+- **`LipDub-Gemini-UI.json`** — the workflow in ComfyUI **UI format** (with positions, links, and 7 colored groups: *Load Models*, *Load Original Video*, *Stage 1*, *Gemini*, *Stage 2*, *Decode*, *Output*). **This is the one you want to load in the ComfyUI canvas.**
+- `Lipdub-Gemini-API.json` — the same workflow in ComfyUI **API format** (logic only, no visual data). Use this one when calling ComfyUI via the API.
 - `CHANGELOG.md` — what was changed relative to the original workflow and why.
 
 ## Requirements
@@ -44,9 +45,9 @@ Install via [ComfyUI‑Manager](https://github.com/Comfy-Org/ComfyUI-Manager) an
 
 ## Usage
 
-1. Load `Lipdub-Gemini-API.json` in ComfyUI (Workflow → Load).
-2. In the `[Input] Load Video` node, choose your source clip.
-3. In the `[Gemini Prompt] Google Gemini` node, set the `prompt` widget to the **target language** (e.g. `Spanish`, `French`, `Hebrew`, `Russian`).
+1. Load `LipDub-Gemini-UI.json` in ComfyUI (**Workflow → Load**, or drag it onto the canvas). You'll see 7 colored groups laid out left‑to‑right.
+2. In the **Load Original Video** group, choose your source clip in `Load Video (Upload)`.
+3. In the **Gemini** group, set the `Google Gemini` node's `prompt` widget to the **target language** (e.g. `Spanish`, `French`, `Hebrew`, `Russian`).
 4. Hit **Run**.
 
 The workflow will:
@@ -58,29 +59,29 @@ The workflow will:
 
 ## Workflow groups
 
-Every node is prefixed with a `[Group]` tag so the graph is self‑documenting even after auto‑layout:
+The UI workflow ships with 7 colored groups laid out left→right:
 
-- **Input** — video loader + length snapping
-- **Gemini Prompt** — system prompt, video packing, Gemini call, debug display
-- **Text Encode** — LTX text encoder + positive/negative conditioning
-- **Models/LoRAs** — checkpoint + distilled LoRA + IC‑LoRA + audio VAE + upscaler
-- **Stage 1 — Base** — 960×544 IC‑LoRA conditioned generation
-- **Stage 2 — Upscale** — latent ×2 upscale + refinement pass at 1920×1088
-- **Decode** — tiled VAE decode + audio decode
-- **FPS/utils** — frame rate primitives
-- **Output** — H.264 MP4 encode (CRF 17)
+| Group | What it does |
+|---|---|
+| **Load Models** | Checkpoint, distilled LoRA, IC‑LoRA, audio VAE, latent upscaler, text encoder |
+| **Load Original Video** | VHS Load Video + auto length snapping (`floor((n‑1)/8)*8+1`) |
+| **Gemini** | System prompt, downscaled video packing, Google Gemini call, debug Show Text |
+| **Stage 1** | 960×544 IC‑LoRA‑conditioned base generation (8 denoising steps) |
+| **Stage 2** | Latent ×2 upscale + refinement pass at 1920×1088 (5 denoising steps) |
+| **Decode** | Tiled VAE decode + audio decode + crop guides |
+| **Output** | `VHS_VideoCombine` H.264 MP4 encode (CRF 17, yuv420p, bt709) |
 
-To add real colored group rectangles, open in ComfyUI → right‑click canvas → **Add Group**, drag around each `[Group]` set, then save as a regular UI workflow JSON (`File → Save`, not `Save (API Format)`).
+The API JSON (`Lipdub-Gemini-API.json`) preserves the same logic but stores no visual data, so when loaded fresh it'll auto‑lay out without the colored rectangles. Every node's `_meta.title` is prefixed with a `[Group]` tag in both files so the structure stays readable either way.
 
 ## Tuning knobs
 
 | What | Where | Default | Try |
 |---|---|---|---|
-| Output quality | `[Output] Video Combine` → `crf` | `17` | `15`‑`19` (lower = sharper, bigger file) |
-| Detail refinement | `[Stage 2 - Upscale] ManualSigmas` → `sigmas` | 5 steps | Add more sigmas for more detail (slower) |
-| Distilled LoRA strength | `[Models/LoRAs] Load LoRA` → `strength_model` | `0.5` | `0.3`‑`0.4` for sharper, needs more steps |
-| Tile overlap | `[Decode] Tiled VAE Decode` → `overlap` | `8` | Max is 8 (latent units, ≈ 256 px) |
-| Gemini context resolution | `[Gemini Prompt] Resize Image v2` → `width/height` | `360×360` | Bump to `512×512` for better lip reading |
+| Output quality | **Output** → `Video Combine` → `crf` | `17` | `15`‑`19` (lower = sharper, bigger file) |
+| Detail refinement | **Stage 2** → `ManualSigmas` → `sigmas` | 5 steps | Add more sigmas for more detail (slower) |
+| Distilled LoRA strength | **Load Models** → `Load LoRA` → `strength_model` | `0.5` | `0.3`‑`0.4` for sharper, needs more steps |
+| Tile overlap | **Decode** → `LTXV Tiled VAE Decode` → `overlap` | `8` | Max is 8 (latent units, ≈ 256 px) |
+| Gemini context resolution | **Gemini** → `Resize Image v2` → `width/height` | `360×360` | Bump to `512×512` for better lip reading |
 
 ## Notes
 

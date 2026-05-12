@@ -2,6 +2,12 @@
 
 All notable changes to the Lipdub‑Gemini workflow.
 
+## [1.2.0] — 2026‑05‑12
+
+### Added
+- **`LipDub-Gemini-UI.json`** — full ComfyUI UI‑format workflow with 7 hand‑authored colored groups (`Load Models`, `Load Original Video`, `Stage 1`, `Gemini`, `Stage 2`, `Decode`, `Output`), node positions, and link metadata. Loading this in ComfyUI gives the original visual layout back.
+- The existing API‑format JSON is unchanged and remains the source of truth for programmatic use.
+
 ## [1.1.0] — 2026‑05‑12
 
 ### Fixed
