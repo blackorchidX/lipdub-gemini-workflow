@@ -2,6 +2,26 @@
 
 All notable changes to the Lipdub‑Gemini workflow.
 
+## [1.5.0] — 2026‑05‑13
+
+### Added
+- **Windowed dubbing mode** — replace only a time range of audio while preserving the rest. Useful when you want to keep the original speaker's voice, mic effects, room tone, and ambient audio everywhere except inside the regenerated segment.
+- New nodes inside the **Stage 1** group:
+  - `5030 PrimitiveInt` "Dub Mode" — `0 = full dub` (default, prior behavior) / `1 = windowed dub`.
+  - `5031 LTXVConcatAVLatent` — windowed concat feeding the source audio (encoded) into the av‑latent.
+  - `5032 LTXVSetAudioVideoMaskByTime` — applies the time mask. Default widgets: `start_time=0.0`, `end_time=8.0`, `video_fps` wired from the source video, `mask_video=False`, `mask_audio=True`, `mask_init_value_video=1.0`, `mask_init_value_audio=0.0`, `slope_len=10`.
+  - `5033 / 5034 easy conditioningIndexSwitch` — switches CFGGuider positive/negative between the full‑dub path (RefTokens `5006`) and the windowed path (SetMaskByTime `5032`).
+  - `5035 easy anythingIndexSwitch` — switches Sampler1's `latent_image` between full‑dub `ConcatAV (4528)` and windowed `SetMaskByTime.av_latent`.
+- Lazy switches: the unused branch is skipped at runtime, so full‑dub runs are exactly as fast as before.
+
+### Usage
+- **Full dub (default)**: `Dub Mode = 0`. Behaves like v1.4 — entire clip's audio regenerated.
+- **Windowed dub**: `Dub Mode = 1`. Edit the `Audio Mask by Time` node's `start_time` and `end_time` to bracket the segment to regenerate. Audio outside that window — including mic effects, echo, and ambient — plays back unchanged (model‑preserved from the source latent). Video is still fully regenerated for lip‑sync.
+
+### Limitations
+- The IC‑LoRA emits clean studio speech inside the masked window. Effects like reverb tails will only bleed across the boundary via `slope_len` (the crossfade); they will not be perfectly reproduced *within* the regenerated segment.
+- The LipDub IC‑LoRA was trained on full‑audio replacement, not time‑masked dubbing. The windowed mode is an opportunistic application of `LTXVSetAudioVideoMaskByTime` — quality is good in practice but not guaranteed for every clip.
+
 ## [1.4.0] — 2026‑05‑13
 
 ### Fixed

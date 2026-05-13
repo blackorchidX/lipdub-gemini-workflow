@@ -117,12 +117,12 @@
         0
       ],
       "positive": [
-        "5006",
+        "5033",
         0
       ],
       "negative": [
-        "5006",
-        1
+        "5034",
+        0
       ]
     },
     "class_type": "CFGGuider",
@@ -149,7 +149,7 @@
         0
       ],
       "latent_image": [
-        "4528",
+        "5035",
         0
       ]
     },
@@ -803,6 +803,135 @@
     "class_type": "VHS_VideoInfoLoaded",
     "_meta": {
       "title": "[Input] Video Info (Loaded) - drives fps from source"
+    }
+  },
+  "5030": {
+    "inputs": {
+      "value": 0,
+      "control_after_generate": "fixed"
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "[Stage 1 - Base] Dub Mode (0=full, 1=windowed)"
+    }
+  },
+  "5031": {
+    "inputs": {
+      "video_latent": [
+        "5004",
+        2
+      ],
+      "audio_latent": [
+        "5005",
+        0
+      ]
+    },
+    "class_type": "LTXVConcatAVLatent",
+    "_meta": {
+      "title": "[Stage 1 - Base] ConcatAV (windowed: source audio)"
+    }
+  },
+  "5032": {
+    "inputs": {
+      "av_latent": [
+        "5031",
+        0
+      ],
+      "positive": [
+        "5004",
+        0
+      ],
+      "negative": [
+        "5004",
+        1
+      ],
+      "model": [
+        "5012",
+        0
+      ],
+      "vae": [
+        "5017",
+        2
+      ],
+      "audio_vae": [
+        "4010",
+        0
+      ],
+      "start_time": 0.0,
+      "end_time": 8.0,
+      "video_fps": [
+        "5029",
+        0
+      ],
+      "mask_video": false,
+      "mask_audio": true,
+      "mask_init_value_video": 1.0,
+      "mask_init_value_audio": 0.0,
+      "slope_len": 10
+    },
+    "class_type": "LTXVSetAudioVideoMaskByTime",
+    "_meta": {
+      "title": "[Stage 1 - Base] Audio Mask by Time (windowed dub)"
+    }
+  },
+  "5033": {
+    "inputs": {
+      "index": [
+        "5030",
+        0
+      ],
+      "cond0": [
+        "5006",
+        0
+      ],
+      "cond1": [
+        "5032",
+        0
+      ]
+    },
+    "class_type": "easy conditioningIndexSwitch",
+    "_meta": {
+      "title": "[Stage 1 - Base] Switch Positive (0=full, 1=windowed)"
+    }
+  },
+  "5034": {
+    "inputs": {
+      "index": [
+        "5030",
+        0
+      ],
+      "cond0": [
+        "5006",
+        1
+      ],
+      "cond1": [
+        "5032",
+        1
+      ]
+    },
+    "class_type": "easy conditioningIndexSwitch",
+    "_meta": {
+      "title": "[Stage 1 - Base] Switch Negative (0=full, 1=windowed)"
+    }
+  },
+  "5035": {
+    "inputs": {
+      "index": [
+        "5030",
+        0
+      ],
+      "value0": [
+        "4528",
+        0
+      ],
+      "value1": [
+        "5032",
+        2
+      ]
+    },
+    "class_type": "easy anythingIndexSwitch",
+    "_meta": {
+      "title": "[Stage 1 - Base] Switch Latent (0=full, 1=windowed)"
     }
   }
 }

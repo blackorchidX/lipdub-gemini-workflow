@@ -50,7 +50,10 @@ Install via [ComfyUI‑Manager](https://github.com/Comfy-Org/ComfyUI-Manager) an
 3. In the **Gemini** group, pick your prompt source:
    - **`Prompt Source` switch = `1` (default)** — Gemini auto‑transcribes + translates. Set the `Google Gemini` node's `prompt` widget to the **target language** (e.g. `Spanish`, `French`, `Hebrew`, `Russian`).
    - **`Prompt Source` switch = `2`** — use the `Manual Prompt` node directly. Type whatever LTX‑formatted prompt you want; Gemini is bypassed (mute it to skip the API call entirely).
-4. Hit **Run**.
+4. In the **Stage 1** group, pick your dub scope:
+   - **`Dub Mode` = `0` (default)** — regenerate audio for the entire clip.
+   - **`Dub Mode` = `1`** — *windowed dub*. Edit `Audio Mask by Time` node: `start_time` and `end_time` (seconds) bracket the segment to regenerate. Audio outside the window (including mic effects, echo, ambient) plays back unchanged.
+5. Hit **Run**.
 
 The workflow will:
 - Load the source video (no manual frame‑cap needed).
