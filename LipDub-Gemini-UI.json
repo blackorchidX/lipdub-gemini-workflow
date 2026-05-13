@@ -1,8 +1,8 @@
 {
   "id": "b7ec2c38-af7b-4029-8d6e-a1f642f28981",
   "revision": 0,
-  "last_node_id": 5026,
-  "last_link_id": 158,
+  "last_node_id": 5028,
+  "last_link_id": 162,
   "nodes": [
     {
       "id": 4528,
@@ -2481,8 +2481,7 @@
           "name": "STRING",
           "type": "STRING",
           "links": [
-            83,
-            154
+            159
           ]
         }
       ],
@@ -2731,7 +2730,7 @@
           "widget": {
             "name": "text"
           },
-          "link": 83
+          "link": 161
         }
       ],
       "outputs": [
@@ -2883,7 +2882,7 @@
           "localized_name": "text",
           "name": "text",
           "type": "STRING",
-          "link": 154
+          "link": 162
         }
       ],
       "outputs": [
@@ -3255,6 +3254,108 @@
           }
         }
       }
+    },
+    {
+      "id": 5027,
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        2038,
+        420
+      ],
+      "size": [
+        400,
+        320
+      ],
+      "flags": {},
+      "order": 50,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "value",
+          "name": "value",
+          "type": "STRING",
+          "widget": {
+            "name": "value"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "STRING",
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            160
+          ]
+        }
+      ],
+      "title": "[Gemini Prompt] Manual Prompt (used when toggle = 2)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "PrimitiveStringMultiline"
+      },
+      "widgets_values": [
+        "A man with brown hair and glasses speaking in Spanish saying, \"¿Me llevo bien con mis compañeros? Bueno, primero que nada...\""
+      ]
+    },
+    {
+      "id": 5028,
+      "type": "easy textSwitch",
+      "pos": [
+        1750,
+        90
+      ],
+      "size": [
+        240,
+        100
+      ],
+      "flags": {},
+      "order": 60,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "text1",
+          "name": "text1",
+          "shape": 7,
+          "type": "STRING",
+          "link": 159
+        },
+        {
+          "localized_name": "text2",
+          "name": "text2",
+          "shape": 7,
+          "type": "STRING",
+          "link": 160
+        },
+        {
+          "localized_name": "input",
+          "name": "input",
+          "type": "INT",
+          "widget": {
+            "name": "input"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "STRING",
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            161,
+            162
+          ]
+        }
+      ],
+      "title": "[Gemini Prompt] Prompt Source (1=Gemini, 2=Manual)",
+      "properties": {
+        "Node name for S&R": "easy textSwitch"
+      },
+      "widgets_values": [
+        1
+      ]
     }
   ],
   "links": [
@@ -3281,14 +3382,6 @@
       1241,
       1,
       "CONDITIONING"
-    ],
-    [
-      83,
-      5019,
-      0,
-      2483,
-      1,
-      "STRING"
     ],
     [
       84,
@@ -3851,14 +3944,6 @@
       "IMAGE"
     ],
     [
-      154,
-      5019,
-      0,
-      5024,
-      0,
-      "STRING"
-    ],
-    [
       155,
       4989,
       0,
@@ -3889,6 +3974,38 @@
       5026,
       0,
       "INT"
+    ],
+    [
+      159,
+      5019,
+      0,
+      5028,
+      0,
+      "STRING"
+    ],
+    [
+      160,
+      5027,
+      0,
+      5028,
+      1,
+      "STRING"
+    ],
+    [
+      161,
+      5028,
+      0,
+      2483,
+      1,
+      "STRING"
+    ],
+    [
+      162,
+      5028,
+      0,
+      5024,
+      0,
+      "STRING"
     ]
   ],
   "groups": [

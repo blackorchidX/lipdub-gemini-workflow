@@ -2,6 +2,20 @@
 
 All notable changes to the Lipdub‑Gemini workflow.
 
+## [1.3.0] — 2026‑05‑13
+
+### Added
+- **Gemini ↔ manual prompt toggle.** You no longer have to mute/rewire the Gemini node to use a hand‑written prompt.
+  - New `PrimitiveStringMultiline` "Manual Prompt" node (id `5027`) — pre‑filled with an example, edit to taste.
+  - New `easy textSwitch` node (id `5028`) titled *Prompt Source (1=Gemini, 2=Manual)*. Its `input` widget picks the source:
+    - `1` → Gemini's output drives the positive CLIP encode and the debug Show Text.
+    - `2` → Manual Prompt drives them instead; Gemini still runs but its output is ignored.
+  - Wiring change: `5019 GeminiNode` → ~~`2483 CLIPTextEncode (Positive).text`~~ / ~~`5024 ShowText.text`~~ is now routed through `5028 textSwitch`, with `5027 PrimitiveStringMultiline` as the alternate input.
+- Both `LipDub-Gemini-UI.json` and `Lipdub-Gemini-API.json` updated; UI groups preserved.
+
+### Tip
+To skip Gemini entirely (zero API calls), set the switch to `2` **and** right‑click the Gemini node → **Mute**. To re‑enable Gemini, unmute and set the switch back to `1`.
+
 ## [1.2.0] — 2026‑05‑12
 
 ### Added

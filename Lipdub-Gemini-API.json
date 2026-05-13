@@ -22,7 +22,7 @@
   "2483": {
     "inputs": {
       "text": [
-        "5019",
+        "5028",
         0
       ],
       "clip": [
@@ -734,7 +734,7 @@
     "inputs": {
       "text_0": "A man with brown hair and glasses speaking in Spanish saying, \"¿Me llevo bien con mis compañeros? Bueno, primero que nada...\"",
       "text": [
-        "5019",
+        "5028",
         0
       ]
     },
@@ -774,6 +774,32 @@
     "class_type": "easy simpleMath",
     "_meta": {
       "title": "[Input] Snap to LTX-valid length (N*8+1)"
+    }
+  },
+  "5027": {
+    "inputs": {
+      "value": "A man with brown hair and glasses speaking in Spanish saying, \"¿Me llevo bien con mis compañeros? Bueno, primero que nada...\""
+    },
+    "class_type": "PrimitiveStringMultiline",
+    "_meta": {
+      "title": "[Gemini Prompt] Manual Prompt (used when toggle = 2)"
+    }
+  },
+  "5028": {
+    "inputs": {
+      "input": 1,
+      "text1": [
+        "5019",
+        0
+      ],
+      "text2": [
+        "5027",
+        0
+      ]
+    },
+    "class_type": "easy textSwitch",
+    "_meta": {
+      "title": "[Gemini Prompt] Prompt Source (1=Gemini, 2=Manual)"
     }
   }
 }

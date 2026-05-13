@@ -47,7 +47,9 @@ Install via [ComfyUI‑Manager](https://github.com/Comfy-Org/ComfyUI-Manager) an
 
 1. Load `LipDub-Gemini-UI.json` in ComfyUI (**Workflow → Load**, or drag it onto the canvas). You'll see 7 colored groups laid out left‑to‑right.
 2. In the **Load Original Video** group, choose your source clip in `Load Video (Upload)`.
-3. In the **Gemini** group, set the `Google Gemini` node's `prompt` widget to the **target language** (e.g. `Spanish`, `French`, `Hebrew`, `Russian`).
+3. In the **Gemini** group, pick your prompt source:
+   - **`Prompt Source` switch = `1` (default)** — Gemini auto‑transcribes + translates. Set the `Google Gemini` node's `prompt` widget to the **target language** (e.g. `Spanish`, `French`, `Hebrew`, `Russian`).
+   - **`Prompt Source` switch = `2`** — use the `Manual Prompt` node directly. Type whatever LTX‑formatted prompt you want; Gemini is bypassed (mute it to skip the API call entirely).
 4. Hit **Run**.
 
 The workflow will:
