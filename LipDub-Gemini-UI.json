@@ -1,8 +1,8 @@
 {
   "id": "b7ec2c38-af7b-4029-8d6e-a1f642f28981",
   "revision": 0,
-  "last_node_id": 5035,
-  "last_link_id": 188,
+  "last_node_id": 5036,
+  "last_link_id": 189,
   "nodes": [
     {
       "id": 4528,
@@ -3296,7 +3296,7 @@
           "widget": {
             "name": "input"
           },
-          "link": null
+          "link": 189
         }
       ],
       "outputs": [
@@ -3310,7 +3310,7 @@
           ]
         }
       ],
-      "title": "[Gemini Prompt] Prompt Source (1=Gemini, 2=Manual)",
+      "title": "[Gemini Prompt] Prompt Source switch (driven by PrimitiveInt)",
       "properties": {
         "Node name for S&R": "easy textSwitch"
       },
@@ -3837,6 +3837,60 @@
       },
       "widgets_values": [
         0
+      ]
+    },
+    {
+      "id": 5036,
+      "type": "PrimitiveInt",
+      "pos": [
+        1470,
+        90
+      ],
+      "size": [
+        240,
+        82
+      ],
+      "flags": {},
+      "order": 25,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "value",
+          "name": "value",
+          "type": "INT",
+          "widget": {
+            "name": "value"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "control_after_generate",
+          "name": "control_after_generate",
+          "type": "COMBO",
+          "widget": {
+            "name": "control_after_generate"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "INT",
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            189
+          ]
+        }
+      ],
+      "title": "[Gemini Prompt] Prompt Source (1=Gemini, 2=Manual)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "PrimitiveInt"
+      },
+      "widgets_values": [
+        1,
+        "fixed"
       ]
     }
   ],
@@ -4640,6 +4694,14 @@
       4829,
       4,
       "LATENT"
+    ],
+    [
+      189,
+      5036,
+      0,
+      5028,
+      2,
+      "INT"
     ]
   ],
   "groups": [

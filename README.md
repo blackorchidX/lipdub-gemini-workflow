@@ -47,9 +47,10 @@ Install via [ComfyUI‑Manager](https://github.com/Comfy-Org/ComfyUI-Manager) an
 
 1. Load `LipDub-Gemini-UI.json` in ComfyUI (**Workflow → Load**, or drag it onto the canvas). You'll see 7 colored groups laid out left‑to‑right.
 2. In the **Load Original Video** group, choose your source clip in `Load Video (Upload)`.
-3. In the **Gemini** group, pick your prompt source:
-   - **`Prompt Source` switch = `1` (default)** — Gemini auto‑transcribes + translates. Set the `Google Gemini` node's `prompt` widget to the **target language** (e.g. `Spanish`, `French`, `Hebrew`, `Russian`).
-   - **`Prompt Source` switch = `2`** — use the `Manual Prompt` node directly. Type whatever LTX‑formatted prompt you want; Gemini is bypassed (mute it to skip the API call entirely).
+3. In the **Gemini** group, pick your prompt source on the `Prompt Source (1=Gemini, 2=Manual)` **PrimitiveInt** node:
+   - **`1` (default)** — Gemini auto‑transcribes + translates. Set the `Google Gemini` node's `prompt` widget to the **target language** (e.g. `Spanish`, `French`, `Hebrew`, `Russian`).
+   - **`2`** — use the `Manual Prompt` node directly. Type whatever LTX‑formatted prompt you want; Gemini is bypassed (mute it to skip the API call entirely).
+   - ⚠️ Always edit this value on the `PrimitiveInt` node, not on the switch itself — the switch's widget is intentionally disabled to prevent a ComfyUI serialization bug that used to silently fall back to Manual after any save (fixed in v1.5.1).
 4. In the **Stage 1** group, pick your dub scope:
    - **`Dub Mode` = `0` (default)** — regenerate audio for the entire clip.
    - **`Dub Mode` = `1`** — *windowed dub*. Edit `Audio Mask by Time` node: `start_time` and `end_time` (seconds) bracket the segment to regenerate. Audio outside the window (including mic effects, echo, ambient) plays back unchanged.

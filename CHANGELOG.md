@@ -2,6 +2,19 @@
 
 All notable changes to the Lipdub‑Gemini workflow.
 
+## [1.5.1] — 2026‑05‑13
+
+### Fixed
+- **Prompt‑source toggle silently falling back to Manual.** ComfyUI's UI re‑serializes INT widget values as JSON strings on save (e.g. `'1'` instead of `1`), and `easy textSwitch.switch()` uses a strict `input == 1` comparison: in Python, `'1' == 1` is `False`, so the switch was returning `text2` (Manual) anytime the workflow had been saved through the canvas. Affected UI users only; API users were unaffected.
+
+### Changed
+- Converted `5028 easy textSwitch.input` from a widget to a real input socket.
+- Added `5036 PrimitiveInt` "Prompt Source (1=Gemini, 2=Manual)" wired into that socket. `PrimitiveInt` enforces an INT output regardless of how its own widget is serialized, so the toggle can't drift back to the broken state on future saves.
+- Both `LipDub-Gemini-UI.json` and `Lipdub-Gemini-API.json` updated.
+
+### Migration
+If you previously edited the toggle by changing `5028`'s `input` widget directly, do it on the new `5036 PrimitiveInt` node instead. The textSwitch no longer has an editable widget.
+
 ## [1.5.0] — 2026‑05‑13
 
 ### Added
