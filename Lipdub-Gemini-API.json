@@ -2,7 +2,7 @@
   "1241": {
     "inputs": {
       "frame_rate": [
-        "4989",
+        "5029",
         0
       ],
       "positive": [
@@ -207,7 +207,7 @@
   "4852": {
     "inputs": {
       "frame_rate": [
-        "4989",
+        "5029",
         0
       ],
       "loop_count": 0,
@@ -386,15 +386,6 @@
       "title": "[Stage 2 - Upscale] ManualSigmas (s2, 5 steps)"
     }
   },
-  "4989": {
-    "inputs": {
-      "value": 24
-    },
-    "class_type": "PrimitiveFloat",
-    "_meta": {
-      "title": "[FPS/utils] fps"
-    }
-  },
   "4995": {
     "inputs": {
       "horizontal_tiles": 2,
@@ -420,7 +411,7 @@
   "5000": {
     "inputs": {
       "a": [
-        "4989",
+        "5029",
         0
       ]
     },
@@ -746,7 +737,7 @@
   "5025": {
     "inputs": {
       "fps": [
-        "4989",
+        "5029",
         0
       ],
       "images": [
@@ -800,6 +791,18 @@
     "class_type": "easy textSwitch",
     "_meta": {
       "title": "[Gemini Prompt] Prompt Source (1=Gemini, 2=Manual)"
+    }
+  },
+  "5029": {
+    "inputs": {
+      "video_info": [
+        "5022",
+        3
+      ]
+    },
+    "class_type": "VHS_VideoInfoLoaded",
+    "_meta": {
+      "title": "[Input] Video Info (Loaded) - drives fps from source"
     }
   }
 }

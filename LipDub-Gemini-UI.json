@@ -1,8 +1,8 @@
 {
   "id": "b7ec2c38-af7b-4029-8d6e-a1f642f28981",
   "revision": 0,
-  "last_node_id": 5028,
-  "last_link_id": 162,
+  "last_node_id": 5029,
+  "last_link_id": 167,
   "nodes": [
     {
       "id": 4528,
@@ -530,7 +530,9 @@
           "localized_name": "video_info",
           "name": "video_info",
           "type": "VHS_VIDEOINFO",
-          "links": null
+          "links": [
+            163
+          ]
         }
       ],
       "title": "[Input] Load Video (Upload) 🎥🅥🅗🅢",
@@ -706,54 +708,6 @@
       },
       "widgets_values": [
         "floor((a-1)/8)*8+1"
-      ]
-    },
-    {
-      "id": 4989,
-      "type": "PrimitiveFloat",
-      "pos": [
-        -655.0037728715993,
-        622.5451484967925
-      ],
-      "size": [
-        270,
-        58
-      ],
-      "flags": {},
-      "order": 5,
-      "mode": 0,
-      "inputs": [
-        {
-          "localized_name": "value",
-          "name": "value",
-          "type": "FLOAT",
-          "widget": {
-            "name": "value"
-          },
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "localized_name": "FLOAT",
-          "name": "FLOAT",
-          "type": "FLOAT",
-          "links": [
-            80,
-            103,
-            122,
-            155
-          ]
-        }
-      ],
-      "title": "[FPS/utils] fps",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.20.1",
-        "Node name for S&R": "PrimitiveFloat"
-      },
-      "widgets_values": [
-        24
       ]
     },
     {
@@ -1531,7 +1485,7 @@
           "widget": {
             "name": "a"
           },
-          "link": 122
+          "link": 166
         }
       ],
       "outputs": [
@@ -2534,7 +2488,7 @@
           "widget": {
             "name": "fps"
           },
-          "link": 155
+          "link": 167
         }
       ],
       "outputs": [
@@ -2832,7 +2786,7 @@
           "widget": {
             "name": "frame_rate"
           },
-          "link": 80
+          "link": 164
         }
       ],
       "outputs": [
@@ -3169,7 +3123,7 @@
           "widget": {
             "name": "frame_rate"
           },
-          "link": 103
+          "link": 165
         },
         {
           "localized_name": "loop_count",
@@ -3356,17 +3310,74 @@
       "widgets_values": [
         1
       ]
+    },
+    {
+      "id": 5029,
+      "type": "VHS_VideoInfoLoaded",
+      "pos": [
+        -655,
+        622
+      ],
+      "size": [
+        220,
+        110
+      ],
+      "flags": {},
+      "order": 70,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "video_info",
+          "name": "video_info",
+          "type": "VHS_VIDEOINFO",
+          "link": 163
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "fps🟦",
+          "name": "fps🟦",
+          "type": "FLOAT",
+          "links": [
+            164,
+            165,
+            166,
+            167
+          ]
+        },
+        {
+          "localized_name": "frame_count🟦",
+          "name": "frame_count🟦",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "localized_name": "duration🟦",
+          "name": "duration🟦",
+          "type": "FLOAT",
+          "links": null
+        },
+        {
+          "localized_name": "width🟦",
+          "name": "width🟦",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "localized_name": "height🟦",
+          "name": "height🟦",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "title": "[Input] Video Info (Loaded) - drives fps from source",
+      "properties": {
+        "Node name for S&R": "VHS_VideoInfoLoaded"
+      },
+      "widgets_values": []
     }
   ],
   "links": [
-    [
-      80,
-      4989,
-      0,
-      1241,
-      2,
-      "FLOAT"
-    ],
     [
       81,
       2483,
@@ -3536,14 +3547,6 @@
       "VAE"
     ],
     [
-      103,
-      4989,
-      0,
-      4852,
-      4,
-      "FLOAT"
-    ],
-    [
       104,
       4995,
       0,
@@ -3686,14 +3689,6 @@
       4995,
       1,
       "LATENT"
-    ],
-    [
-      122,
-      4989,
-      0,
-      5000,
-      0,
-      "FLOAT"
     ],
     [
       123,
@@ -3944,14 +3939,6 @@
       "IMAGE"
     ],
     [
-      155,
-      4989,
-      0,
-      5025,
-      2,
-      "FLOAT"
-    ],
-    [
       156,
       5023,
       0,
@@ -4006,6 +3993,46 @@
       5024,
       0,
       "STRING"
+    ],
+    [
+      163,
+      5022,
+      3,
+      5029,
+      0,
+      "VHS_VIDEOINFO"
+    ],
+    [
+      164,
+      5029,
+      0,
+      1241,
+      2,
+      "FLOAT"
+    ],
+    [
+      165,
+      5029,
+      0,
+      4852,
+      4,
+      "FLOAT"
+    ],
+    [
+      166,
+      5029,
+      0,
+      5000,
+      0,
+      "FLOAT"
+    ],
+    [
+      167,
+      5029,
+      0,
+      5025,
+      2,
+      "FLOAT"
     ]
   ],
   "groups": [

@@ -2,6 +2,23 @@
 
 All notable changes to the Lipdub‑Gemini workflow.
 
+## [1.4.0] — 2026‑05‑13
+
+### Fixed
+- **Output fps now matches the source video's fps.** Previously the workflow ran everything off a hard‑coded `PrimitiveFloat fps = 24`, so a 30 fps source produced a 24 fps output with the wrong duration. The hard‑coded primitive (`4989`) is gone.
+
+### Changed
+- New `VHS_VideoInfoLoaded` node (id `5029`) reads from `VHS_LoadVideo.video_info` (output 3) and provides the loaded fps as a FLOAT.
+- All four fps consumers were rewired to read from it:
+  - `LTXVConditioning.frame_rate` (generation conditioning)
+  - `VHS_VideoCombine.frame_rate` (output encoding)
+  - `LTXFloatToInt.a` → `LTXVEmptyLatentAudio.frame_rate` (audio latent)
+  - `CreateVideo (Gemini Input).fps` (the MP4 sent to Gemini)
+- Both `LipDub-Gemini-UI.json` and `Lipdub-Gemini-API.json` updated.
+
+### Note
+The output fps will match the source's *loaded* fps — i.e. whatever VHS actually read. If you use VHS_LoadVideo's `force_rate` widget (left at `0` by default = native), the output equals the source fps exactly. If you ever set `force_rate` to something else, that becomes the truth and the output follows.
+
 ## [1.3.0] — 2026‑05‑13
 
 ### Added
