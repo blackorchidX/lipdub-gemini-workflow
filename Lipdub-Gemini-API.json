@@ -37,7 +37,7 @@
   },
   "2612": {
     "inputs": {
-      "text": "pc game, console game, video game, cartoon, childish, ugly",
+      "text": "distorted sound, saturated sound, muffled sound, loud sound, deformed facial features, asymmetrical face, missing facial features, disfigured teeth, blurry teeth, mouth out of sync, lip sync error, text, subtitles, logo, watermark, signature, copyright, low quality, distorted, bad anatomy, blurry, pixelated, low resolution, grainy, compression artifacts, jpeg artifacts, glitches, pc game, console game, video game, cartoon, childish, ugly",
       "clip": [
         "4982",
         0
@@ -113,7 +113,7 @@
     "inputs": {
       "cfg": 1,
       "model": [
-        "5012",
+        "5039",
         0
       ],
       "positive": [
@@ -237,7 +237,7 @@
     "inputs": {
       "cfg": 1,
       "model": [
-        "5012",
+        "5039",
         0
       ],
       "positive": [
@@ -849,7 +849,7 @@
         1
       ],
       "model": [
-        "5012",
+        "5039",
         0
       ],
       "vae": [
@@ -945,6 +945,52 @@
     "class_type": "PrimitiveInt",
     "_meta": {
       "title": "[Gemini Prompt] Prompt Source (1=Gemini, 2=Manual)"
+    }
+  },
+  "5037": {
+    "inputs": {
+      "model": [
+        "5012",
+        0
+      ],
+      "sage_attention": "disabled",
+      "allow_compile": false
+    },
+    "class_type": "PathchSageAttentionKJ",
+    "_meta": {
+      "title": "[Models/LoRAs] SageAttention (set to 'auto' after pip install sageattention)"
+    }
+  },
+  "5038": {
+    "inputs": {
+      "model": [
+        "5037",
+        0
+      ],
+      "chunks": 2,
+      "dim_threshold": 4096
+    },
+    "class_type": "LTXVChunkFeedForward",
+    "_meta": {
+      "title": "[Models/LoRAs] Chunk FeedForward (VRAM saver)"
+    }
+  },
+  "5039": {
+    "inputs": {
+      "model": [
+        "5038",
+        0
+      ],
+      "blocks": "",
+      "video_scale": 1.0,
+      "audio_scale": 1.0,
+      "audio_to_video_scale": 1.0,
+      "video_to_audio_scale": 1.0,
+      "triton_kernels": false
+    },
+    "class_type": "LTX2AttentionTunerPatch",
+    "_meta": {
+      "title": "[Models/LoRAs] Attention Tuner (neutral 1.0 scales; triton off)"
     }
   }
 }

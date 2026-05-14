@@ -2,6 +2,32 @@
 
 All notable changes to the Lipdub‑Gemini workflow.
 
+## [1.7.0] — 2026‑05‑14
+
+### Added
+- **Performance tweak chain** after the IC‑LoRA loader, inspired by RuneXX's *Just‑Dub‑It* workflow. All three are KJNodes (already installed). The chain is `5012 IC‑LoRA → 5037 → 5038 → 5039 → CFGGuiders & SetMaskByTime`.
+  - **`5037 PathchSageAttentionKJ`** — set to `sage_attention="disabled"` (no‑op placeholder). Flip to `auto` after `pip install sageattention` for a Sage Attention speed/VRAM win.
+  - **`5038 LTXVChunkFeedForward`** — `chunks=2, dim_threshold=4096`. Splits the FFN activation tensor in 2 across the sequence dim when it exceeds the threshold; pure‑PyTorch VRAM saver, no extra dependencies, mathematically equivalent to non‑chunked.
+  - **`5039 LTX2AttentionTunerPatch`** — `blocks=""` (all), all 4 attention scales `= 1.0`, `triton_kernels=False`. Replaces the LTX2 forward pass with an alternate implementation that claims VRAM reductions at neutral scales; experimental but reversible.
+
+### Tunable
+- Each patcher can be muted (`Ctrl+M`) or unwired to revert. The chain is straight‑line, so removing any one node and reconnecting its neighbours is trivial.
+- Once you `pip install sageattention` (and ideally `triton`), set `5037.sage_attention = "auto"` for the largest speed/VRAM gain; optionally also set `5039.triton_kernels = True`.
+
+### Note
+These patchers are marked **EXPERIMENTAL** by KJNodes. With the conservative defaults here, output should be identical or near‑identical to v1.6 — they're aimed at reducing peak VRAM and (with extra packages) speeding up inference. If you observe artifacts on a specific clip, mute the patchers and report which ones.
+
+## [1.6.0] — 2026‑05‑14
+
+### Changed
+- **Negative prompt upgraded** for LipDub‑specific failure modes. Replaced the short generic negative `"pc game, console game, video game, cartoon, childish, ugly"` with a comprehensive 30‑token string covering:
+  - Audio failures (distorted/saturated/muffled/loud sound)
+  - Lip‑sync and face failures (deformed/asymmetrical features, disfigured/blurry teeth, mouth out of sync)
+  - Overlay artifacts (text, subtitles, logo, watermark, signature)
+  - Generic LTX quality failures (low quality, blurry, pixelated, compression/jpeg artifacts, glitches)
+  - Original aesthetic preferences kept (pc game, console game, video game, cartoon, childish, ugly)
+- Both `LipDub-Gemini-UI.json` and `Lipdub-Gemini-API.json` updated. Adapted from RuneXX's *Just‑Dub‑It* negative prompt with additions targeting LipDub's specific failure modes (audio and mouth/teeth).
+
 ## [1.5.1] — 2026‑05‑13
 
 ### Fixed

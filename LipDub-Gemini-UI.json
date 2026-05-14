@@ -1,8 +1,8 @@
 {
   "id": "b7ec2c38-af7b-4029-8d6e-a1f642f28981",
   "revision": 0,
-  "last_node_id": 5036,
-  "last_link_id": 189,
+  "last_node_id": 5039,
+  "last_link_id": 195,
   "nodes": [
     {
       "id": 4528,
@@ -377,9 +377,7 @@
           "name": "model",
           "type": "MODEL",
           "links": [
-            92,
-            106,
-            173
+            190
           ]
         },
         {
@@ -1308,7 +1306,7 @@
           "localized_name": "model",
           "name": "model",
           "type": "MODEL",
-          "link": 92
+          "link": 193
         },
         {
           "localized_name": "positive",
@@ -1561,7 +1559,7 @@
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
-        "pc game, console game, video game, cartoon, childish, ugly"
+        "distorted sound, saturated sound, muffled sound, loud sound, deformed facial features, asymmetrical face, missing facial features, disfigured teeth, blurry teeth, mouth out of sync, lip sync error, text, subtitles, logo, watermark, signature, copyright, low quality, distorted, bad anatomy, blurry, pixelated, low resolution, grainy, compression artifacts, jpeg artifacts, glitches, pc game, console game, video game, cartoon, childish, ugly"
       ]
     },
     {
@@ -2147,7 +2145,7 @@
           "localized_name": "model",
           "name": "model",
           "type": "MODEL",
-          "link": 106
+          "link": 194
         },
         {
           "localized_name": "positive",
@@ -3521,7 +3519,7 @@
           "localized_name": "model",
           "name": "model",
           "type": "MODEL",
-          "link": 173
+          "link": 195
         },
         {
           "localized_name": "vae",
@@ -3892,6 +3890,226 @@
         1,
         "fixed"
       ]
+    },
+    {
+      "id": 5037,
+      "type": "PathchSageAttentionKJ",
+      "pos": [
+        -763.7583341999893,
+        256.76586134095584
+      ],
+      "size": [
+        320,
+        90
+      ],
+      "flags": {},
+      "order": 250,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 190
+        },
+        {
+          "localized_name": "sage_attention",
+          "name": "sage_attention",
+          "type": "COMBO",
+          "widget": {
+            "name": "sage_attention"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "allow_compile",
+          "name": "allow_compile",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "allow_compile"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            191
+          ]
+        }
+      ],
+      "title": "[Models/LoRAs] SageAttention (set to 'auto' after pip install sageattention)",
+      "properties": {
+        "Node name for S&R": "PathchSageAttentionKJ"
+      },
+      "widgets_values": [
+        "disabled",
+        false
+      ]
+    },
+    {
+      "id": 5038,
+      "type": "LTXVChunkFeedForward",
+      "pos": [
+        -763.7583341999893,
+        366.76586134095584
+      ],
+      "size": [
+        320,
+        90
+      ],
+      "flags": {},
+      "order": 260,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 191
+        },
+        {
+          "localized_name": "chunks",
+          "name": "chunks",
+          "type": "INT",
+          "widget": {
+            "name": "chunks"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "dim_threshold",
+          "name": "dim_threshold",
+          "type": "INT",
+          "widget": {
+            "name": "dim_threshold"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "model",
+          "name": "model",
+          "type": "MODEL",
+          "links": [
+            192
+          ]
+        }
+      ],
+      "title": "[Models/LoRAs] Chunk FeedForward (VRAM saver)",
+      "properties": {
+        "Node name for S&R": "LTXVChunkFeedForward"
+      },
+      "widgets_values": [
+        2,
+        4096
+      ]
+    },
+    {
+      "id": 5039,
+      "type": "LTX2AttentionTunerPatch",
+      "pos": [
+        -763.7583341999893,
+        476.76586134095584
+      ],
+      "size": [
+        320,
+        200
+      ],
+      "flags": {},
+      "order": 270,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 192
+        },
+        {
+          "localized_name": "blocks",
+          "name": "blocks",
+          "type": "STRING",
+          "widget": {
+            "name": "blocks"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "video_scale",
+          "name": "video_scale",
+          "type": "FLOAT",
+          "widget": {
+            "name": "video_scale"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "audio_scale",
+          "name": "audio_scale",
+          "type": "FLOAT",
+          "widget": {
+            "name": "audio_scale"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "audio_to_video_scale",
+          "name": "audio_to_video_scale",
+          "type": "FLOAT",
+          "widget": {
+            "name": "audio_to_video_scale"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "video_to_audio_scale",
+          "name": "video_to_audio_scale",
+          "type": "FLOAT",
+          "widget": {
+            "name": "video_to_audio_scale"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "triton_kernels",
+          "name": "triton_kernels",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "triton_kernels"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "model",
+          "name": "model",
+          "type": "MODEL",
+          "links": [
+            193,
+            194,
+            195
+          ]
+        }
+      ],
+      "title": "[Models/LoRAs] Attention Tuner (neutral 1.0 scales; triton off)",
+      "properties": {
+        "Node name for S&R": "LTX2AttentionTunerPatch"
+      },
+      "widgets_values": [
+        "",
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        false
+      ]
     }
   ],
   "links": [
@@ -3976,14 +4194,6 @@
       "LATENT"
     ],
     [
-      92,
-      5012,
-      0,
-      4828,
-      0,
-      "MODEL"
-    ],
-    [
       95,
       4832,
       0,
@@ -4054,14 +4264,6 @@
       4852,
       1,
       "AUDIO"
-    ],
-    [
-      106,
-      5012,
-      0,
-      4964,
-      0,
-      "MODEL"
     ],
     [
       107,
@@ -4568,14 +4770,6 @@
       "CONDITIONING"
     ],
     [
-      173,
-      5012,
-      0,
-      5032,
-      3,
-      "MODEL"
-    ],
-    [
       174,
       5017,
       2,
@@ -4702,6 +4896,54 @@
       5028,
       2,
       "INT"
+    ],
+    [
+      190,
+      5012,
+      0,
+      5037,
+      0,
+      "MODEL"
+    ],
+    [
+      191,
+      5037,
+      0,
+      5038,
+      0,
+      "MODEL"
+    ],
+    [
+      192,
+      5038,
+      0,
+      5039,
+      0,
+      "MODEL"
+    ],
+    [
+      193,
+      5039,
+      0,
+      4828,
+      0,
+      "MODEL"
+    ],
+    [
+      194,
+      5039,
+      0,
+      4964,
+      0,
+      "MODEL"
+    ],
+    [
+      195,
+      5039,
+      0,
+      5032,
+      3,
+      "MODEL"
     ]
   ],
   "groups": [
