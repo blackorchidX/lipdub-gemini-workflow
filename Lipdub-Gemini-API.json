@@ -1,89 +1,4 @@
 {
-  "1241": {
-    "inputs": {
-      "frame_rate": [
-        "5029",
-        0
-      ],
-      "positive": [
-        "2483",
-        0
-      ],
-      "negative": [
-        "2612",
-        0
-      ]
-    },
-    "class_type": "LTXVConditioning",
-    "_meta": {
-      "title": "[Text Encode] LTXVConditioning"
-    }
-  },
-  "2483": {
-    "inputs": {
-      "text": [
-        "5028",
-        0
-      ],
-      "clip": [
-        "4982",
-        0
-      ]
-    },
-    "class_type": "CLIPTextEncode",
-    "_meta": {
-      "title": "[Text Encode] CLIP Text Encode (Positive Prompt)"
-    }
-  },
-  "2612": {
-    "inputs": {
-      "text": "distorted sound, saturated sound, muffled sound, loud sound, deformed facial features, asymmetrical face, missing facial features, disfigured teeth, blurry teeth, mouth out of sync, lip sync error, text, subtitles, logo, watermark, signature, copyright, low quality, distorted, bad anatomy, blurry, pixelated, low resolution, grainy, compression artifacts, jpeg artifacts, glitches, pc game, console game, video game, cartoon, childish, ugly",
-      "clip": [
-        "4982",
-        0
-      ]
-    },
-    "class_type": "CLIPTextEncode",
-    "_meta": {
-      "title": "[Text Encode] CLIP Text Encode (Negative Prompt)"
-    }
-  },
-  "3059": {
-    "inputs": {
-      "width": 960,
-      "height": 544,
-      "length": [
-        "5026",
-        0
-      ],
-      "batch_size": 1
-    },
-    "class_type": "EmptyLTXVLatentVideo",
-    "_meta": {
-      "title": "[Stage 1 - Base] EmptyLTXVLatentVideo"
-    }
-  },
-  "3980": {
-    "inputs": {
-      "frames_number": [
-        "5026",
-        0
-      ],
-      "frame_rate": [
-        "5000",
-        0
-      ],
-      "batch_size": 1,
-      "audio_vae": [
-        "4010",
-        0
-      ]
-    },
-    "class_type": "LTXVEmptyLatentAudio",
-    "_meta": {
-      "title": "[Stage 1 - Base] LTXV Empty Latent Audio"
-    }
-  },
   "4010": {
     "inputs": {
       "ckpt_name": "ltx-2.3-22b-dev.safetensors"
@@ -91,117 +6,6 @@
     "class_type": "LTXVAudioVAELoader",
     "_meta": {
       "title": "[Models/LoRAs] LTXV Audio VAE Loader"
-    }
-  },
-  "4528": {
-    "inputs": {
-      "video_latent": [
-        "5004",
-        2
-      ],
-      "audio_latent": [
-        "3980",
-        0
-      ]
-    },
-    "class_type": "LTXVConcatAVLatent",
-    "_meta": {
-      "title": "[Stage 1 - Base] LTXVConcatAVLatent"
-    }
-  },
-  "4828": {
-    "inputs": {
-      "cfg": 1,
-      "model": [
-        "5039",
-        0
-      ],
-      "positive": [
-        "5033",
-        0
-      ],
-      "negative": [
-        "5034",
-        0
-      ]
-    },
-    "class_type": "CFGGuider",
-    "_meta": {
-      "title": "[Stage 1 - Base] CFGGuider"
-    }
-  },
-  "4829": {
-    "inputs": {
-      "noise": [
-        "4832",
-        0
-      ],
-      "guider": [
-        "4828",
-        0
-      ],
-      "sampler": [
-        "4831",
-        0
-      ],
-      "sigmas": [
-        "4984",
-        0
-      ],
-      "latent_image": [
-        "5035",
-        0
-      ]
-    },
-    "class_type": "SamplerCustomAdvanced",
-    "_meta": {
-      "title": "[Stage 1 - Base] SamplerCustomAdvanced"
-    }
-  },
-  "4831": {
-    "inputs": {
-      "sampler_name": "euler"
-    },
-    "class_type": "KSamplerSelect",
-    "_meta": {
-      "title": "[Stage 1 - Base] KSamplerSelect"
-    }
-  },
-  "4832": {
-    "inputs": {
-      "noise_seed": 43
-    },
-    "class_type": "RandomNoise",
-    "_meta": {
-      "title": "[Stage 1 - Base] RandomNoise"
-    }
-  },
-  "4845": {
-    "inputs": {
-      "av_latent": [
-        "4829",
-        0
-      ]
-    },
-    "class_type": "LTXVSeparateAVLatent",
-    "_meta": {
-      "title": "[Stage 1 - Base] LTXVSeparateAVLatent"
-    }
-  },
-  "4848": {
-    "inputs": {
-      "samples": [
-        "4973",
-        1
-      ],
-      "audio_vae": [
-        "4010",
-        0
-      ]
-    },
-    "class_type": "LTXVAudioVAEDecode",
-    "_meta": {
-      "title": "[Decode] LTXV Audio VAE Decode"
     }
   },
   "4852": {
@@ -220,11 +24,11 @@
       "pingpong": false,
       "save_output": true,
       "images": [
-        "4995",
+        "5073",
         0
       ],
       "audio": [
-        "4848",
+        "5074",
         0
       ]
     },
@@ -256,7 +60,7 @@
   },
   "4967": {
     "inputs": {
-      "noise_seed": 42
+      "noise_seed": 734818630165151
     },
     "class_type": "RandomNoise",
     "_meta": {
@@ -368,15 +172,6 @@
       "title": "[Text Encode] LTXV Audio Text Encoder Loader"
     }
   },
-  "4984": {
-    "inputs": {
-      "sigmas": "1.0, 0.99375, 0.9875, 0.98125, 0.975, 0.909375, 0.725, 0.421875, 0.0"
-    },
-    "class_type": "ManualSigmas",
-    "_meta": {
-      "title": "[Stage 1 - Base] ManualSigmas"
-    }
-  },
   "4985": {
     "inputs": {
       "sigmas": "0.909375, 0.825, 0.725, 0.55, 0.421875, 0.0"
@@ -384,28 +179,6 @@
     "class_type": "ManualSigmas",
     "_meta": {
       "title": "[Stage 2 - Upscale] ManualSigmas (s2, 5 steps)"
-    }
-  },
-  "4995": {
-    "inputs": {
-      "horizontal_tiles": 2,
-      "vertical_tiles": 2,
-      "overlap": 8,
-      "last_frame_fix": false,
-      "working_device": "auto",
-      "working_dtype": "auto",
-      "vae": [
-        "5017",
-        2
-      ],
-      "latents": [
-        "5015",
-        2
-      ]
-    },
-    "class_type": "LTXVTiledVAEDecode",
-    "_meta": {
-      "title": "[Decode] 🅛🅣🅧 LTXV Tiled VAE Decode"
     }
   },
   "5000": {
@@ -437,106 +210,18 @@
       "title": "[Stage 2 - Upscale] Resize Image/Mask (s2 size)"
     }
   },
-  "5004": {
-    "inputs": {
-      "frame_idx": 0,
-      "strength": 1,
-      "latent_downscale_factor": 1,
-      "crop": "disabled",
-      "use_tiled_encode": true,
-      "tile_size": 256,
-      "tile_overlap": 64,
-      "positive": [
-        "1241",
-        0
-      ],
-      "negative": [
-        "1241",
-        1
-      ],
-      "vae": [
-        "5017",
-        2
-      ],
-      "latent": [
-        "3059",
-        0
-      ],
-      "image": [
-        "5009",
-        0
-      ]
-    },
-    "class_type": "LTXAddVideoICLoRAGuide",
-    "_meta": {
-      "title": "[Stage 1 - Base] 🅛🅣🅧 Add Video IC-LoRA Guide"
-    }
-  },
-  "5005": {
-    "inputs": {
-      "audio": [
-        "5022",
-        2
-      ],
-      "audio_vae": [
-        "4010",
-        0
-      ]
-    },
-    "class_type": "LTXVAudioVAEEncode",
-    "_meta": {
-      "title": "[Stage 1 - Base] LTXV Audio VAE Encode"
-    }
-  },
-  "5006": {
-    "inputs": {
-      "positive": [
-        "5004",
-        0
-      ],
-      "negative": [
-        "5004",
-        1
-      ],
-      "audio_latent": [
-        "5005",
-        0
-      ]
-    },
-    "class_type": "LTXVSetAudioRefTokens",
-    "_meta": {
-      "title": "[Stage 1 - Base] 🅛🅣🅧 Set Audio Ref Tokens"
-    }
-  },
-  "5009": {
-    "inputs": {
-      "resize_type": "scale dimensions",
-      "resize_type.width": 960,
-      "resize_type.height": 544,
-      "resize_type.crop": "center",
-      "scale_method": "area",
-      "input": [
-        "5022",
-        0
-      ]
-    },
-    "class_type": "ResizeImageMaskNode",
-    "_meta": {
-      "title": "[Stage 1 - Base] Resize Image/Mask (s1 size)"
-    }
-  },
   "5011": {
     "inputs": {
       "positive": [
-        "5004",
+        "5047",
         0
       ],
       "negative": [
-        "5004",
+        "5047",
         1
       ],
       "latent": [
-        "4845",
+        "5057",
         0
       ]
     },
@@ -570,7 +255,7 @@
         1
       ],
       "audio_latent": [
-        "4845",
+        "5057",
         1
       ]
     },
@@ -614,26 +299,6 @@
       "title": "[Stage 2 - Upscale] 🅛🅣🅧 Add Video IC-LoRA Guide"
     }
   },
-  "5015": {
-    "inputs": {
-      "positive": [
-        "5014",
-        0
-      ],
-      "negative": [
-        "5014",
-        1
-      ],
-      "latent": [
-        "4973",
-        0
-      ]
-    },
-    "class_type": "LTXVCropGuides",
-    "_meta": {
-      "title": "[Decode] LTXVCropGuides"
-    }
-  },
   "5017": {
     "inputs": {
       "ckpt_name": "ltx-2.3-22b-dev.safetensors"
@@ -657,37 +322,9 @@
       "title": "[Models/LoRAs] Load LoRA"
     }
   },
-  "5019": {
-    "inputs": {
-      "prompt": "Spanish",
-      "model": "gemini-3-1-flash-lite",
-      "seed": 305008790708804,
-      "system_prompt": [
-        "5020",
-        0
-      ],
-      "video": [
-        "5025",
-        0
-      ]
-    },
-    "class_type": "GeminiNode",
-    "_meta": {
-      "title": "[Gemini Prompt] Google Gemini"
-    }
-  },
-  "5020": {
-    "inputs": {
-      "value": "You are a video analyzer and prompt enhancer agent specializing in the new video dubbing ic-lora feature for LTX 2.3. Given an input video provided by the user and a selected language in the input prompt, you will transcribe the input video's content, translate them to the corresponding language and write a full prompt according to the official guidelines below. The prompt needs to be highly descriptive, with intricate details describing the subject, visual style, lighting, etc. you should respond only the prompt in your output, nothing else.\n\nBest practices for LipDub ic-lora workflow:\n1. make sure to use phonetic alphabets for non Latin languages like Russian, Hebrew, Arabic, etc.\n2.Write a prompt that describes both the speaker, the language and the dialogue like:\nA woman with blonde hair and glasses speaking in spanish saying \"parece que esta por llover\"\n\n3.Try to match the amount of syllables as the original, or sligthly below (text is flexible, there are many ways to say the same thing)\n--\n\nGeneral Prompting Guide for LTX 2.3:\n\nTo get the most out of **LTX** models, a strong prompt makes all the difference. The key is painting a complete picture of the story you’re telling — one that flows naturally from beginning to end and covers all the elements the model needs to bring your vision to life.\n\nIf you’re new to writing prompts for video generation, this guide will help you construct effective, production-ready prompts.\n\n## Table of Contents\n\n- [Key Elements to Include](#key-elements-to-include)\n- [For Best Results](#for-best-results)\n- [What Works Well](#what-works-well)\n- [What to Avoid](#what-to-avoid)\n- [LipDub (Speech Replacement)](#lipdub-speech-replacement)\n- [Helpful Terms](#additional-helpful-terms)\n- [Sample Prompts](#sample-prompts)\n  - [Example 1](#example-1)\n  - [Example 2](#example-2)\n\n---\n\n## Key Elements to Include\n\nWhen writing a prompt, aim to include the following elements:\n\n### 1. Establish the Shot\n\nUse cinematography terms that match your intended genre. Include shot scale or category-specific characteristics to refine the visual style.\n\n### 2. Set the Scene\n\nDescribe lighting conditions, color palette, surface textures, and atmosphere to establish mood and tone.\n\n### 3. Describe the Action\n\nWrite the core action as a natural sequence, flowing clearly from beginning to end.\n\n### 4. Define the Character(s)\n\nInclude age, hairstyle, clothing, and distinguishing features. Express emotion through **physical cues**, not abstract labels.\n\n### 5. Identify Camera Movement(s)\n\nSpecify how and when the camera moves. Describing how subjects appear _after_ the movement helps the model complete the motion accurately.\n\n### 6. Describe the Audio\n\nClearly describe ambient sound, music, speech, or singing.\n\n- Place spoken dialogue in **quotation marks**\n- Specify language and accent if needed\n\n---\n\n## For Best Results\n\n- Write your prompt as a **single flowing paragraph**\n- Use **present tense** verbs for action and movement\n- Match the level of detail to the shot scale  \n  (close-ups need more detail than wide shots)\n- Describe camera movement relative to the subject\n- Aim for **4–8 descriptive sentences**\n- Iterate freely — LTX is designed for fast experimentation\n\n---\n\n## What Works Well\n\n| Strength                | Description                                                                                           |\n| ----------------------- | ----------------------------------------------------------------------------------------------------- |\n| Cinematic compositions  | Wide, medium, and close-up shots with thoughtful lighting, shallow depth of field, and natural motion |\n| Emotive human moments   | Strong single-subject emotional expressions, subtle gestures, and facial nuance                       |\n| Atmosphere & setting    | Fog, mist, golden-hour light, rain, reflections, ambient textures                                     |\n| Clear camera language   | Explicit instructions like “slow dolly in” or “handheld tracking”                                     |\n| Stylized aesthetics     | Painterly, noir, analog film, fashion editorial, pixelated animation                                  |\n| Lighting & mood control | Backlighting, color palettes, rim light, flickering lamps                                             |\n| Voice                   | Characters can talk and sing in multiple languages                                                     |\n\n---\n\n## What to Avoid\n\n| Avoid                     | Why It Doesn’t Work                                        |\n| ------------------------- | ---------------------------------------------------------- |\n| Internal emotional states | Use visual cues instead of labels like “sad” or “confused” |\n| Text and logos            | Readable text is not currently reliable                    |\n| Complex physics           | Chaotic motion can introduce artifacts (dancing is OK)     |\n| Overloaded scenes         | Too many characters or actions reduce clarity              |\n| Conflicting lighting      | Mixed light logic confuses scene interpretation            |\n| Overcomplicated prompts   | Start simple and layer complexity gradually                |\n\n---\n\n## LipDub (Speech Replacement)\n\nThe [LipDub IC-LoRA](/open-source-model/usage-guides/hdr-video-ic-lo-ra) is a video-to-video tool that replaces spoken dialogue in existing video. Unlike text-to-video generation, you are providing a source video and writing a prompt that describes what the speaker should say instead.\n\nLipDub can be used for dubbing into other languages or for rephrasing dialogue in the original language.\n\n### Prompt Template\n\n```\n[Speaker] is speaking [Language/Accent], saying: \"[Dialogue]\"\n```\n\n**Example:**\n\n```\nA woman speaking in English saying: \"Let's test the capabilities of the LTX model\"\n```\n\nYou can add details about emotion or delivery style to the prompt.\n\n### Requirements\n\n- **Provide the full dialogue text** — the model will follow the content of the prompt. It does **not** translate dialogue for you.\n- **Use native script** — write the dialogue in the alphabet of the target language (e.g., Cyrillic for Russian, Chinese characters for Mandarin).\n- **Single speaker only** — the beta IC-LoRA does not distinguish between multiple speakers and will lip-sync all visible faces.\n\n### Best Practices\n\n- **Match audio length** — Try to keep your translation close to the length of the original dialogue. \n\nToo long: The model might skip words. \n\nToo short: The output might sound slow and unnatural.\n\nTip: Since there are many ways to say the same thing, play around with your wording until the length is right.\n\n---\n\n## Additional Helpful Terms\n\nThis list is not exhaustive, but provides useful examples for shaping your results.\n\n### Categories\n\n**Animation**\n\n- Stop-motion\n- 2D / 3D animation\n- Claymation\n- Hand-drawn\n\n**Stylized**\n\n- Comic book\n- Cyberpunk\n- 8-bit pixel\n- Surreal\n- Minimalist\n- Painterly\n- Illustrated\n\n**Cinematic**\n\n- Period drama\n- Film noir\n- Fantasy\n- Epic space opera\n- Thriller\n- Modern romance\n- Experimental film\n- Arthouse\n- Documentary\n\n---\n\n### Visual Details\n\n**Lighting**\n\n- Flickering candles\n- Neon glow\n- Natural sunlight\n- Dramatic shadows\n\n**Textures**\n\n- Rough stone\n- Smooth metal\n- Worn fabric\n- Glossy surfaces\n\n**Color Palette**\n\n- Vibrant\n- Muted\n- Monochromatic\n- High contrast\n\n**Atmosphere**\n\n- Fog\n- Rain\n- Dust\n- Smoke\n- Particles\n\n---\n\n### Sound and Voice\n\n**Ambient Settings**\n\n- Coffeeshop noise\n- Wind and rain\n- Forest ambience with birds\n\n**Dialogue Style**\n\n- Energetic announcer\n- Resonant voice with gravitas\n- Distorted radio-style\n- Robotic monotone\n- Childlike curiosity\n\n**Volume**\n\n- Whisper\n- Mutter\n- Shout\n- Scream\n\n---\n\n### Technical Style Markers\n\n**Camera Language**\n\n- Follows\n- Tracks\n- Pans across\n- Circles around\n- Tilts upward\n- Pushes in / pulls back\n- Overhead view\n- Handheld movement\n- Over-the-shoulder\n- Wide establishing shot\n- Static frame\n\n**Film Characteristics**\n\n- Film grain\n- Lens flares\n- Pixelated edges\n- Jittery stop-motion\n\n**Scale Indicators**\n\n- Expansive\n- Epic\n- Intimate\n- Claustrophobic\n\n**Pacing & Temporal Effects**\n\n- Slow motion\n- Time-lapse\n- Rapid cuts\n- Lingering shot\n- Continuous shot\n- Freeze-frame\n- Fade-in / fade-out\n- Seamless transition\n- Sudden stop\n\n**Visual Effects**\n\n- Particle systems\n- Motion blur\n- Depth of field\n\n---\n\n## Sample Prompts\n\n### Example 1\n\n[![News video](https://vumbnail.com/1133134310.jpg)](https://player.vimeo.com/video/1133134310)\n\n**Prompt:**\n\n_EXT. SMALL TOWN STREET – MORNING – LIVE NEWS BROADCAST\nThe shot opens on a news reporter standing in front of a row of cordoned-off cars, yellow caution tape fluttering behind him. The light is warm, early sun reflecting off the camera lens. The faint hum of chatter and distant drilling fills the air.\nThe reporter, composed but visibly excited, looks directly into the camera, microphone in hand.\nReporter (live):\n“Thank you, Sylvia. And yes — this is a sentence I never thought I’d say on live television — but this morning, here in the quiet town of New Castle, Vermont… black gold has been found!”\nHe gestures slightly toward the field behind him.\nReporter (grinning):\n“If my cameraman can pan over, you’ll see what all the excitement’s about.”\nThe camera pans right, slowly revealing a construction site surrounded by workers in hard hats. A beat of silence — then, with a sudden roar, a geyser of oil erupts from the ground, blasting upward in a violent plume.\nWorkers cheer and scramble, the black stream glistening in the morning light. The camera shakes slightly, trying to stay focused through the chaos.\nReporter (off-screen, shouting over the noise):\n“There it is, folks — the moment New Castle will never forget!”\nThe camera catches the sunlight gleaming off the oil mist before pulling back, revealing the entire scene — the small-town skyline silhouetted against the wild fountain of oil._\n\n### Example 2\n\n[![Animation](https://vumbnail.com/1133134445.jpg)](https://player.vimeo.com/video/1133134445)\n\n**Prompt:**\n\n_The camera opens in a calm, sunlit frog yoga studio. Warm morning light washes over the wooden floor as incense smoke drifts lazily in the air. The senior frog instructor sits cross-legged at the center, eyes closed, voice deep and calm. “We are one with the pond.” All the frogs answer softly: “Ommm...” “We are one with the mud.” “Ommm...” He smiles faintly. “We are one with the flies.” A pause.\nThe camera pans to the side towards one frog who twitches, eyes darting. Suddenly its tongue snaps out, catching a fly mid-air and pulling it into its mouth.\nThe master exhales slowly, still serene. “But we do not chase the flies...” Beat. “not during class.”\nThe guilty frog lowers its head in shame, folding its hands back into a meditative pose. The other frogs resume their chant: “Ommm...” Camera holds for a moment on the embarrassed frog, eyes closed too tightly, pretending nothing happened._"
-    },
-    "class_type": "PrimitiveStringMultiline",
-    "_meta": {
-      "title": "[Gemini Prompt] String (Multiline)"
-    }
-  },
   "5022": {
     "inputs": {
-      "video": "The Office - Dwight's final interview scene - 10s.mp4",
+      "video": "shot5.mp4",
       "force_rate": 0,
       "custom_width": 0,
       "custom_height": 0,
@@ -701,7 +338,563 @@
       "title": "[Input] Load Video (Upload) 🎥🅥🅗🅢"
     }
   },
-  "5023": {
+  "5026": {
+    "inputs": {
+      "value": "floor((a-1)/8)*8+1",
+      "a": [
+        "5022",
+        1
+      ]
+    },
+    "class_type": "easy simpleMath",
+    "_meta": {
+      "title": "[Input] Snap to LTX-valid length (N*8+1)"
+    }
+  },
+  "5029": {
+    "inputs": {
+      "video_info": [
+        "5022",
+        3
+      ]
+    },
+    "class_type": "VHS_VideoInfoLoaded",
+    "_meta": {
+      "title": "[Input] Video Info (Loaded) - drives fps from source"
+    }
+  },
+  "5037": {
+    "inputs": {
+      "sage_attention": "disabled",
+      "allow_compile": false,
+      "model": [
+        "5012",
+        0
+      ]
+    },
+    "class_type": "PathchSageAttentionKJ",
+    "_meta": {
+      "title": "[Models/LoRAs] SageAttention (set to 'auto' after pip install sageattention)"
+    }
+  },
+  "5038": {
+    "inputs": {
+      "chunks": 2,
+      "dim_threshold": 4096,
+      "model": [
+        "5037",
+        0
+      ]
+    },
+    "class_type": "LTXVChunkFeedForward",
+    "_meta": {
+      "title": "[Models/LoRAs] Chunk FeedForward (VRAM saver)"
+    }
+  },
+  "5039": {
+    "inputs": {
+      "blocks": "",
+      "video_scale": 1,
+      "audio_scale": 1,
+      "audio_to_video_scale": 1,
+      "video_to_audio_scale": 1,
+      "triton_kernels": false,
+      "model": [
+        "5038",
+        0
+      ]
+    },
+    "class_type": "LTX2AttentionTunerPatch",
+    "_meta": {
+      "title": "[Models/LoRAs] Attention Tuner (neutral 1.0 scales; triton off)"
+    }
+  },
+  "5041": {
+    "inputs": {
+      "sigmas": "1.0, 0.99375, 0.9875, 0.98125, 0.975, 0.909375, 0.725, 0.421875, 0.0"
+    },
+    "class_type": "ManualSigmas",
+    "_meta": {
+      "title": "[Stage 1 - Base] ManualSigmas"
+    }
+  },
+  "5042": {
+    "inputs": {
+      "audio": [
+        "5022",
+        2
+      ],
+      "audio_vae": [
+        "4010",
+        0
+      ]
+    },
+    "class_type": "LTXVAudioVAEEncode",
+    "_meta": {
+      "title": "[Stage 1 - Base] LTXV Audio VAE Encode"
+    }
+  },
+  "5043": {
+    "inputs": {
+      "sampler_name": "euler"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "[Stage 1 - Base] KSamplerSelect"
+    }
+  },
+  "5044": {
+    "inputs": {
+      "frames_number": [
+        "5026",
+        0
+      ],
+      "frame_rate": [
+        "5000",
+        0
+      ],
+      "batch_size": 1,
+      "audio_vae": [
+        "4010",
+        0
+      ]
+    },
+    "class_type": "LTXVEmptyLatentAudio",
+    "_meta": {
+      "title": "[Stage 1 - Base] LTXV Empty Latent Audio"
+    }
+  },
+  "5045": {
+    "inputs": {
+      "value": 0
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "[Stage 1 - Base] Dub Mode (0=full, 1=windowed)"
+    }
+  },
+  "5046": {
+    "inputs": {
+      "noise_seed": 270373396640855
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "[Stage 1 - Base] RandomNoise"
+    }
+  },
+  "5047": {
+    "inputs": {
+      "frame_idx": 0,
+      "strength": 1,
+      "latent_downscale_factor": 1,
+      "crop": "disabled",
+      "use_tiled_encode": true,
+      "tile_size": 256,
+      "tile_overlap": 64,
+      "positive": [
+        "5068",
+        0
+      ],
+      "negative": [
+        "5068",
+        1
+      ],
+      "vae": [
+        "5017",
+        2
+      ],
+      "latent": [
+        "5049",
+        0
+      ],
+      "image": [
+        "5048",
+        0
+      ]
+    },
+    "class_type": "LTXAddVideoICLoRAGuide",
+    "_meta": {
+      "title": "[Stage 1 - Base] 🅛🅣🅧 Add Video IC-LoRA Guide"
+    }
+  },
+  "5048": {
+    "inputs": {
+      "resize_type": "scale dimensions",
+      "resize_type.width": 960,
+      "resize_type.height": 544,
+      "resize_type.crop": "center",
+      "scale_method": "area",
+      "input": [
+        "5022",
+        0
+      ]
+    },
+    "class_type": "ResizeImageMaskNode",
+    "_meta": {
+      "title": "[Stage 1 - Base] Resize Image/Mask (s1 size)"
+    }
+  },
+  "5049": {
+    "inputs": {
+      "width": 960,
+      "height": 544,
+      "length": [
+        "5026",
+        0
+      ],
+      "batch_size": 1
+    },
+    "class_type": "EmptyLTXVLatentVideo",
+    "_meta": {
+      "title": "[Stage 1 - Base] EmptyLTXVLatentVideo"
+    }
+  },
+  "5050": {
+    "inputs": {
+      "positive": [
+        "5047",
+        0
+      ],
+      "negative": [
+        "5047",
+        1
+      ],
+      "audio_latent": [
+        "5042",
+        0
+      ]
+    },
+    "class_type": "LTXVSetAudioRefTokens",
+    "_meta": {
+      "title": "[Stage 1 - Base] 🅛🅣🅧 Set Audio Ref Tokens"
+    }
+  },
+  "5051": {
+    "inputs": {
+      "video_latent": [
+        "5047",
+        2
+      ],
+      "audio_latent": [
+        "5044",
+        0
+      ]
+    },
+    "class_type": "LTXVConcatAVLatent",
+    "_meta": {
+      "title": "[Stage 1 - Base] LTXVConcatAVLatent"
+    }
+  },
+  "5052": {
+    "inputs": {
+      "start_time": 0,
+      "end_time": 8,
+      "video_fps": [
+        "5029",
+        0
+      ],
+      "mask_video": false,
+      "mask_audio": true,
+      "mask_init_value_video": 1,
+      "mask_init_value_audio": 0,
+      "slope_len": 10,
+      "av_latent": [
+        "5054",
+        0
+      ],
+      "positive": [
+        "5047",
+        0
+      ],
+      "negative": [
+        "5047",
+        1
+      ],
+      "model": [
+        "5039",
+        0
+      ],
+      "vae": [
+        "5017",
+        2
+      ],
+      "audio_vae": [
+        "4010",
+        0
+      ]
+    },
+    "class_type": "LTXVSetAudioVideoMaskByTime",
+    "_meta": {
+      "title": "[Stage 1 - Base] Audio Mask by Time (windowed dub)"
+    }
+  },
+  "5053": {
+    "inputs": {
+      "cfg": 1,
+      "model": [
+        "5039",
+        0
+      ],
+      "positive": [
+        "5055",
+        0
+      ],
+      "negative": [
+        "5059",
+        0
+      ]
+    },
+    "class_type": "CFGGuider",
+    "_meta": {
+      "title": "[Stage 1 - Base] CFGGuider"
+    }
+  },
+  "5054": {
+    "inputs": {
+      "video_latent": [
+        "5047",
+        2
+      ],
+      "audio_latent": [
+        "5042",
+        0
+      ]
+    },
+    "class_type": "LTXVConcatAVLatent",
+    "_meta": {
+      "title": "[Stage 1 - Base] ConcatAV (windowed: source audio)"
+    }
+  },
+  "5055": {
+    "inputs": {
+      "index": [
+        "5045",
+        0
+      ],
+      "cond0": [
+        "5050",
+        0
+      ],
+      "cond1": [
+        "5052",
+        0
+      ]
+    },
+    "class_type": "easy conditioningIndexSwitch",
+    "_meta": {
+      "title": "[Stage 1 - Base] Switch Positive (0=full, 1=windowed)"
+    }
+  },
+  "5056": {
+    "inputs": {
+      "noise": [
+        "5046",
+        0
+      ],
+      "guider": [
+        "5053",
+        0
+      ],
+      "sampler": [
+        "5043",
+        0
+      ],
+      "sigmas": [
+        "5041",
+        0
+      ],
+      "latent_image": [
+        "5058",
+        0
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "[Stage 1 - Base] SamplerCustomAdvanced"
+    }
+  },
+  "5057": {
+    "inputs": {
+      "av_latent": [
+        "5056",
+        0
+      ]
+    },
+    "class_type": "LTXVSeparateAVLatent",
+    "_meta": {
+      "title": "[Stage 1 - Base] LTXVSeparateAVLatent"
+    }
+  },
+  "5058": {
+    "inputs": {
+      "index": [
+        "5045",
+        0
+      ],
+      "value0": [
+        "5051",
+        0
+      ],
+      "value1": [
+        "5052",
+        2
+      ]
+    },
+    "class_type": "easy anythingIndexSwitch",
+    "_meta": {
+      "title": "[Stage 1 - Base] Switch Latent (0=full, 1=windowed)"
+    }
+  },
+  "5059": {
+    "inputs": {
+      "index": [
+        "5045",
+        0
+      ],
+      "cond0": [
+        "5050",
+        1
+      ],
+      "cond1": [
+        "5052",
+        1
+      ]
+    },
+    "class_type": "easy conditioningIndexSwitch",
+    "_meta": {
+      "title": "[Stage 1 - Base] Switch Negative (0=full, 1=windowed)"
+    }
+  },
+  "5061": {
+    "inputs": {
+      "value": 1
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "[Gemini Prompt] Prompt Source (1=Gemini, 2=Manual)"
+    }
+  },
+  "5062": {
+    "inputs": {
+      "input": [
+        "5061",
+        0
+      ],
+      "text1": [
+        "5071",
+        0
+      ],
+      "text2": [
+        "5064",
+        0
+      ]
+    },
+    "class_type": "easy textSwitch",
+    "_meta": {
+      "title": "[Gemini Prompt] Prompt Source switch (driven by PrimitiveInt)"
+    }
+  },
+  "5063": {
+    "inputs": {
+      "value": "You are a video analyzer and prompt enhancer agent specializing in the new video dubbing ic-lora feature for LTX 2.3. Given an input video provided by the user and a selected language in the input prompt, you will transcribe the input video's content, translate them to the corresponding language and write a full prompt according to the official guidelines below. The prompt needs to be highly descriptive, with intricate details describing the subject, visual style, lighting, etc. you should respond only the prompt in your output, nothing else.\n\nBest practices for LipDub ic-lora workflow:\n1. make sure to use phonetic alphabets for non Latin languages like Russian, Hebrew, Arabic, etc.\n2.Write a prompt that describes both the speaker, the language and the dialogue like:\nA woman with blonde hair and glasses speaking in spanish saying \"parece que esta por llover\"\n\n3.Try to match the amount of syllables as the original, or sligthly below (text is flexible, there are many ways to say the same thing)\n--\n\nGeneral Prompting Guide for LTX 2.3:\n\nTo get the most out of **LTX** models, a strong prompt makes all the difference. The key is painting a complete picture of the story you’re telling — one that flows naturally from beginning to end and covers all the elements the model needs to bring your vision to life.\n\nIf you’re new to writing prompts for video generation, this guide will help you construct effective, production-ready prompts.\n\n## Table of Contents\n\n- [Key Elements to Include](#key-elements-to-include)\n- [For Best Results](#for-best-results)\n- [What Works Well](#what-works-well)\n- [What to Avoid](#what-to-avoid)\n- [LipDub (Speech Replacement)](#lipdub-speech-replacement)\n- [Helpful Terms](#additional-helpful-terms)\n- [Sample Prompts](#sample-prompts)\n  - [Example 1](#example-1)\n  - [Example 2](#example-2)\n\n---\n\n## Key Elements to Include\n\nWhen writing a prompt, aim to include the following elements:\n\n### 1. Establish the Shot\n\nUse cinematography terms that match your intended genre. Include shot scale or category-specific characteristics to refine the visual style.\n\n### 2. Set the Scene\n\nDescribe lighting conditions, color palette, surface textures, and atmosphere to establish mood and tone.\n\n### 3. Describe the Action\n\nWrite the core action as a natural sequence, flowing clearly from beginning to end.\n\n### 4. Define the Character(s)\n\nInclude age, hairstyle, clothing, and distinguishing features. Express emotion through **physical cues**, not abstract labels.\n\n### 5. Identify Camera Movement(s)\n\nSpecify how and when the camera moves. Describing how subjects appear _after_ the movement helps the model complete the motion accurately.\n\n### 6. Describe the Audio\n\nClearly describe ambient sound, music, speech, or singing.\n\n- Place spoken dialogue in **quotation marks**\n- Specify language and accent if needed\n\n---\n\n## For Best Results\n\n- Write your prompt as a **single flowing paragraph**\n- Use **present tense** verbs for action and movement\n- Match the level of detail to the shot scale  \n  (close-ups need more detail than wide shots)\n- Describe camera movement relative to the subject\n- Aim for **4–8 descriptive sentences**\n- Iterate freely — LTX is designed for fast experimentation\n\n---\n\n## What Works Well\n\n| Strength                | Description                                                                                           |\n| ----------------------- | ----------------------------------------------------------------------------------------------------- |\n| Cinematic compositions  | Wide, medium, and close-up shots with thoughtful lighting, shallow depth of field, and natural motion |\n| Emotive human moments   | Strong single-subject emotional expressions, subtle gestures, and facial nuance                       |\n| Atmosphere & setting    | Fog, mist, golden-hour light, rain, reflections, ambient textures                                     |\n| Clear camera language   | Explicit instructions like “slow dolly in” or “handheld tracking”                                     |\n| Stylized aesthetics     | Painterly, noir, analog film, fashion editorial, pixelated animation                                  |\n| Lighting & mood control | Backlighting, color palettes, rim light, flickering lamps                                             |\n| Voice                   | Characters can talk and sing in multiple languages                                                     |\n\n---\n\n## What to Avoid\n\n| Avoid                     | Why It Doesn’t Work                                        |\n| ------------------------- | ---------------------------------------------------------- |\n| Internal emotional states | Use visual cues instead of labels like “sad” or “confused” |\n| Text and logos            | Readable text is not currently reliable                    |\n| Complex physics           | Chaotic motion can introduce artifacts (dancing is OK)     |\n| Overloaded scenes         | Too many characters or actions reduce clarity              |\n| Conflicting lighting      | Mixed light logic confuses scene interpretation            |\n| Overcomplicated prompts   | Start simple and layer complexity gradually                |\n\n---\n\n## LipDub (Speech Replacement)\n\nThe [LipDub IC-LoRA](/open-source-model/usage-guides/hdr-video-ic-lo-ra) is a video-to-video tool that replaces spoken dialogue in existing video. Unlike text-to-video generation, you are providing a source video and writing a prompt that describes what the speaker should say instead.\n\nLipDub can be used for dubbing into other languages or for rephrasing dialogue in the original language.\n\n### Prompt Template\n\n```\n[Speaker] is speaking [Language/Accent], saying: \"[Dialogue]\"\n```\n\n**Example:**\n\n```\nA woman speaking in English saying: \"Let's test the capabilities of the LTX model\"\n```\n\nYou can add details about emotion or delivery style to the prompt.\n\n### Requirements\n\n- **Provide the full dialogue text** — the model will follow the content of the prompt. It does **not** translate dialogue for you.\n- **Use native script** — write the dialogue in the alphabet of the target language (e.g., Cyrillic for Russian, Chinese characters for Mandarin).\n- **Single speaker only** — the beta IC-LoRA does not distinguish between multiple speakers and will lip-sync all visible faces.\n\n### Best Practices\n\n- **Match audio length** — Try to keep your translation close to the length of the original dialogue. \n\nToo long: The model might skip words. \n\nToo short: The output might sound slow and unnatural.\n\nTip: Since there are many ways to say the same thing, play around with your wording until the length is right.\n\n---\n\n## Additional Helpful Terms\n\nThis list is not exhaustive, but provides useful examples for shaping your results.\n\n### Categories\n\n**Animation**\n\n- Stop-motion\n- 2D / 3D animation\n- Claymation\n- Hand-drawn\n\n**Stylized**\n\n- Comic book\n- Cyberpunk\n- 8-bit pixel\n- Surreal\n- Minimalist\n- Painterly\n- Illustrated\n\n**Cinematic**\n\n- Period drama\n- Film noir\n- Fantasy\n- Epic space opera\n- Thriller\n- Modern romance\n- Experimental film\n- Arthouse\n- Documentary\n\n---\n\n### Visual Details\n\n**Lighting**\n\n- Flickering candles\n- Neon glow\n- Natural sunlight\n- Dramatic shadows\n\n**Textures**\n\n- Rough stone\n- Smooth metal\n- Worn fabric\n- Glossy surfaces\n\n**Color Palette**\n\n- Vibrant\n- Muted\n- Monochromatic\n- High contrast\n\n**Atmosphere**\n\n- Fog\n- Rain\n- Dust\n- Smoke\n- Particles\n\n---\n\n### Sound and Voice\n\n**Ambient Settings**\n\n- Coffeeshop noise\n- Wind and rain\n- Forest ambience with birds\n\n**Dialogue Style**\n\n- Energetic announcer\n- Resonant voice with gravitas\n- Distorted radio-style\n- Robotic monotone\n- Childlike curiosity\n\n**Volume**\n\n- Whisper\n- Mutter\n- Shout\n- Scream\n\n---\n\n### Technical Style Markers\n\n**Camera Language**\n\n- Follows\n- Tracks\n- Pans across\n- Circles around\n- Tilts upward\n- Pushes in / pulls back\n- Overhead view\n- Handheld movement\n- Over-the-shoulder\n- Wide establishing shot\n- Static frame\n\n**Film Characteristics**\n\n- Film grain\n- Lens flares\n- Pixelated edges\n- Jittery stop-motion\n\n**Scale Indicators**\n\n- Expansive\n- Epic\n- Intimate\n- Claustrophobic\n\n**Pacing & Temporal Effects**\n\n- Slow motion\n- Time-lapse\n- Rapid cuts\n- Lingering shot\n- Continuous shot\n- Freeze-frame\n- Fade-in / fade-out\n- Seamless transition\n- Sudden stop\n\n**Visual Effects**\n\n- Particle systems\n- Motion blur\n- Depth of field\n\n---\n\n## Sample Prompts\n\n### Example 1\n\n[![News video](https://vumbnail.com/1133134310.jpg)](https://player.vimeo.com/video/1133134310)\n\n**Prompt:**\n\n_EXT. SMALL TOWN STREET – MORNING – LIVE NEWS BROADCAST\nThe shot opens on a news reporter standing in front of a row of cordoned-off cars, yellow caution tape fluttering behind him. The light is warm, early sun reflecting off the camera lens. The faint hum of chatter and distant drilling fills the air.\nThe reporter, composed but visibly excited, looks directly into the camera, microphone in hand.\nReporter (live):\n“Thank you, Sylvia. And yes — this is a sentence I never thought I’d say on live television — but this morning, here in the quiet town of New Castle, Vermont… black gold has been found!”\nHe gestures slightly toward the field behind him.\nReporter (grinning):\n“If my cameraman can pan over, you’ll see what all the excitement’s about.”\nThe camera pans right, slowly revealing a construction site surrounded by workers in hard hats. A beat of silence — then, with a sudden roar, a geyser of oil erupts from the ground, blasting upward in a violent plume.\nWorkers cheer and scramble, the black stream glistening in the morning light. The camera shakes slightly, trying to stay focused through the chaos.\nReporter (off-screen, shouting over the noise):\n“There it is, folks — the moment New Castle will never forget!”\nThe camera catches the sunlight gleaming off the oil mist before pulling back, revealing the entire scene — the small-town skyline silhouetted against the wild fountain of oil._\n\n### Example 2\n\n[![Animation](https://vumbnail.com/1133134445.jpg)](https://player.vimeo.com/video/1133134445)\n\n**Prompt:**\n\n_The camera opens in a calm, sunlit frog yoga studio. Warm morning light washes over the wooden floor as incense smoke drifts lazily in the air. The senior frog instructor sits cross-legged at the center, eyes closed, voice deep and calm. “We are one with the pond.” All the frogs answer softly: “Ommm...” “We are one with the mud.” “Ommm...” He smiles faintly. “We are one with the flies.” A pause.\nThe camera pans to the side towards one frog who twitches, eyes darting. Suddenly its tongue snaps out, catching a fly mid-air and pulling it into its mouth.\nThe master exhales slowly, still serene. “But we do not chase the flies...” Beat. “not during class.”\nThe guilty frog lowers its head in shame, folding its hands back into a meditative pose. The other frogs resume their chant: “Ommm...” Camera holds for a moment on the embarrassed frog, eyes closed too tightly, pretending nothing happened._"
+    },
+    "class_type": "PrimitiveStringMultiline",
+    "_meta": {
+      "title": "[Gemini Prompt] String (Multiline)"
+    }
+  },
+  "5064": {
+    "inputs": {
+      "value": "A man with brown hair and glasses speaking in Spanish saying, \"¿Me llevo bien con mis compañeros? Bueno, primero que nada...\""
+    },
+    "class_type": "PrimitiveStringMultiline",
+    "_meta": {
+      "title": "[Gemini Prompt] Manual Prompt (used when toggle = 2)"
+    }
+  },
+  "5065": {
+    "inputs": {
+      "text": "distorted sound, saturated sound, muffled sound, loud sound, deformed facial features, asymmetrical face, missing facial features, disfigured teeth, blurry teeth, mouth out of sync, lip sync error, text, subtitles, logo, watermark, signature, copyright, low quality, distorted, bad anatomy, blurry, pixelated, low resolution, grainy, compression artifacts, jpeg artifacts, glitches, pc game, console game, video game, cartoon, childish, ugly",
+      "clip": [
+        "4982",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "[Text Encode] CLIP Text Encode (Negative Prompt)"
+    }
+  },
+  "5066": {
+    "inputs": {
+      "text_undefined": "Hans Landa, a middle-aged man with sharp features and slicked-back dark hair, is dressed in a crisp, olive-green SS-Standartenführer uniform adorned with an Iron Cross on his collar. He is seated at a small marble café table in a warmly lit, dimly atmospheric 1944 Paris café, his expression one of calculated, authoritative charm. The camera remains in a steady medium shot focusing on his face and upper torso as he makes a polite, measured gesture with his index finger toward a waiter standing just off-camera. He speaks in Italian with a distinct, thick German accent, maintaining a poised and condescendingly polite cadence. Hans Landa is speaking in Italian, saying: \"Due strudel, uno per me e uno per la signorina. Un caffè ristretto, e un bicchiere di latte.\"",
+      "text": [
+        "5062",
+        0
+      ]
+    },
+    "class_type": "ShowText|pysssss",
+    "_meta": {
+      "title": "[Gemini Prompt] Show Text 🐍"
+    }
+  },
+  "5067": {
+    "inputs": {
+      "text": [
+        "5062",
+        0
+      ],
+      "clip": [
+        "4982",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "[Text Encode] CLIP Text Encode (Positive Prompt)"
+    }
+  },
+  "5068": {
+    "inputs": {
+      "frame_rate": [
+        "5029",
+        0
+      ],
+      "positive": [
+        "5067",
+        0
+      ],
+      "negative": [
+        "5065",
+        0
+      ]
+    },
+    "class_type": "LTXVConditioning",
+    "_meta": {
+      "title": "[Text Encode] LTXVConditioning"
+    }
+  },
+  "5069": {
+    "inputs": {
+      "fps": [
+        "5029",
+        0
+      ],
+      "images": [
+        "5070",
+        0
+      ],
+      "audio": [
+        "5022",
+        2
+      ]
+    },
+    "class_type": "CreateVideo",
+    "_meta": {
+      "title": "[Gemini Prompt] Create Video (Gemini Input)"
+    }
+  },
+  "5070": {
     "inputs": {
       "width": 360,
       "height": 360,
@@ -721,276 +914,81 @@
       "title": "[Gemini Prompt] Resize Image v2"
     }
   },
-  "5024": {
+  "5071": {
     "inputs": {
-      "text_0": "A man with brown hair and glasses speaking in Spanish saying, \"¿Me llevo bien con mis compañeros? Bueno, primero que nada...\"",
-      "text": [
-        "5028",
+      "prompt": "Hans Landa from Inglourious Basterds, middle-aged man in a sharp green SS-Standartenführer uniform with an iron cross at the collar, slicked-back dark hair, seated at a small marble café table in a warmly lit 1944 Paris café, addressing a waiter off-camera with a small polite gesture, speaking in Italian with a thick German accent, in a measured polite cadence of authoritative warmth, saying: \"Due strudel, uno per me e uno per la signorina. Un caffè ristretto, e un bicchiere di latte.\"",
+      "model": "gemini-3-1-flash-lite",
+      "seed": 122760295342951,
+      "system_prompt": [
+        "5063",
+        0
+      ],
+      "video": [
+        "5069",
         0
       ]
     },
-    "class_type": "ShowText|pysssss",
+    "class_type": "GeminiNode",
     "_meta": {
-      "title": "[Gemini Prompt] Show Text 🐍"
+      "title": "[Gemini Prompt] Google Gemini"
     }
   },
-  "5025": {
+  "5073": {
     "inputs": {
-      "fps": [
-        "5029",
-        0
-      ],
-      "images": [
-        "5023",
-        0
-      ],
-      "audio": [
-        "5022",
-        2
-      ]
-    },
-    "class_type": "CreateVideo",
-    "_meta": {
-      "title": "[Gemini Prompt] Create Video (Gemini Input)"
-    }
-  },
-  "5026": {
-    "inputs": {
-      "value": "floor((a-1)/8)*8+1",
-      "a": [
-        "5022",
-        1
-      ]
-    },
-    "class_type": "easy simpleMath",
-    "_meta": {
-      "title": "[Input] Snap to LTX-valid length (N*8+1)"
-    }
-  },
-  "5027": {
-    "inputs": {
-      "value": "A man with brown hair and glasses speaking in Spanish saying, \"¿Me llevo bien con mis compañeros? Bueno, primero que nada...\""
-    },
-    "class_type": "PrimitiveStringMultiline",
-    "_meta": {
-      "title": "[Gemini Prompt] Manual Prompt (used when toggle = 2)"
-    }
-  },
-  "5028": {
-    "inputs": {
-      "input": [
-        "5036",
-        0
-      ],
-      "text1": [
-        "5019",
-        0
-      ],
-      "text2": [
-        "5027",
-        0
-      ]
-    },
-    "class_type": "easy textSwitch",
-    "_meta": {
-      "title": "[Gemini Prompt] Prompt Source (1=Gemini, 2=Manual)"
-    }
-  },
-  "5029": {
-    "inputs": {
-      "video_info": [
-        "5022",
-        3
-      ]
-    },
-    "class_type": "VHS_VideoInfoLoaded",
-    "_meta": {
-      "title": "[Input] Video Info (Loaded) - drives fps from source"
-    }
-  },
-  "5030": {
-    "inputs": {
-      "value": 0,
-      "control_after_generate": "fixed"
-    },
-    "class_type": "PrimitiveInt",
-    "_meta": {
-      "title": "[Stage 1 - Base] Dub Mode (0=full, 1=windowed)"
-    }
-  },
-  "5031": {
-    "inputs": {
-      "video_latent": [
-        "5004",
-        2
-      ],
-      "audio_latent": [
-        "5005",
-        0
-      ]
-    },
-    "class_type": "LTXVConcatAVLatent",
-    "_meta": {
-      "title": "[Stage 1 - Base] ConcatAV (windowed: source audio)"
-    }
-  },
-  "5032": {
-    "inputs": {
-      "av_latent": [
-        "5031",
-        0
-      ],
-      "positive": [
-        "5004",
-        0
-      ],
-      "negative": [
-        "5004",
-        1
-      ],
-      "model": [
-        "5039",
-        0
-      ],
+      "horizontal_tiles": 2,
+      "vertical_tiles": 2,
+      "overlap": 8,
+      "last_frame_fix": false,
+      "working_device": "auto",
+      "working_dtype": "auto",
       "vae": [
         "5017",
         2
       ],
-      "audio_vae": [
-        "4010",
-        0
-      ],
-      "start_time": 0.0,
-      "end_time": 8.0,
-      "video_fps": [
-        "5029",
-        0
-      ],
-      "mask_video": false,
-      "mask_audio": true,
-      "mask_init_value_video": 1.0,
-      "mask_init_value_audio": 0.0,
-      "slope_len": 10
-    },
-    "class_type": "LTXVSetAudioVideoMaskByTime",
-    "_meta": {
-      "title": "[Stage 1 - Base] Audio Mask by Time (windowed dub)"
-    }
-  },
-  "5033": {
-    "inputs": {
-      "index": [
-        "5030",
-        0
-      ],
-      "cond0": [
-        "5006",
-        0
-      ],
-      "cond1": [
-        "5032",
-        0
-      ]
-    },
-    "class_type": "easy conditioningIndexSwitch",
-    "_meta": {
-      "title": "[Stage 1 - Base] Switch Positive (0=full, 1=windowed)"
-    }
-  },
-  "5034": {
-    "inputs": {
-      "index": [
-        "5030",
-        0
-      ],
-      "cond0": [
-        "5006",
-        1
-      ],
-      "cond1": [
-        "5032",
-        1
-      ]
-    },
-    "class_type": "easy conditioningIndexSwitch",
-    "_meta": {
-      "title": "[Stage 1 - Base] Switch Negative (0=full, 1=windowed)"
-    }
-  },
-  "5035": {
-    "inputs": {
-      "index": [
-        "5030",
-        0
-      ],
-      "value0": [
-        "4528",
-        0
-      ],
-      "value1": [
-        "5032",
+      "latents": [
+        "5075",
         2
       ]
     },
-    "class_type": "easy anythingIndexSwitch",
+    "class_type": "LTXVTiledVAEDecode",
     "_meta": {
-      "title": "[Stage 1 - Base] Switch Latent (0=full, 1=windowed)"
+      "title": "[Decode] 🅛🅣🅧 LTXV Tiled VAE Decode"
     }
   },
-  "5036": {
+  "5074": {
     "inputs": {
-      "value": 1,
-      "control_after_generate": "fixed"
+      "samples": [
+        "4973",
+        1
+      ],
+      "audio_vae": [
+        "4010",
+        0
+      ]
     },
-    "class_type": "PrimitiveInt",
+    "class_type": "LTXVAudioVAEDecode",
     "_meta": {
-      "title": "[Gemini Prompt] Prompt Source (1=Gemini, 2=Manual)"
+      "title": "[Decode] LTXV Audio VAE Decode"
     }
   },
-  "5037": {
+  "5075": {
     "inputs": {
-      "model": [
-        "5012",
+      "positive": [
+        "5014",
         0
       ],
-      "sage_attention": "disabled",
-      "allow_compile": false
-    },
-    "class_type": "PathchSageAttentionKJ",
-    "_meta": {
-      "title": "[Models/LoRAs] SageAttention (set to 'auto' after pip install sageattention)"
-    }
-  },
-  "5038": {
-    "inputs": {
-      "model": [
-        "5037",
-        0
+      "negative": [
+        "5014",
+        1
       ],
-      "chunks": 2,
-      "dim_threshold": 4096
-    },
-    "class_type": "LTXVChunkFeedForward",
-    "_meta": {
-      "title": "[Models/LoRAs] Chunk FeedForward (VRAM saver)"
-    }
-  },
-  "5039": {
-    "inputs": {
-      "model": [
-        "5038",
+      "latent": [
+        "4973",
         0
-      ],
-      "blocks": "",
-      "video_scale": 1.0,
-      "audio_scale": 1.0,
-      "audio_to_video_scale": 1.0,
-      "video_to_audio_scale": 1.0,
-      "triton_kernels": false
+      ]
     },
-    "class_type": "LTX2AttentionTunerPatch",
+    "class_type": "LTXVCropGuides",
     "_meta": {
-      "title": "[Models/LoRAs] Attention Tuner (neutral 1.0 scales; triton off)"
+      "title": "[Decode] LTXVCropGuides"
     }
   }
 }

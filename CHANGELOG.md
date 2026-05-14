@@ -2,6 +2,27 @@
 
 All notable changes to the Lipdub‑Gemini workflow.
 
+## [1.8.0] — 2026‑05‑14
+
+### Polished
+- **Canvas layout overhaul.** The workflow has been re‑arranged inside ComfyUI for a clean left‑to‑right data flow with consistent column alignment per group, no zero functional change. Layout convention going forward:
+  - `Load Models` (blue) — top‑left; loaders in a left column, perf‑patch chain in a right column.
+  - `Load Original Video` (blue) — bottom‑left.
+  - `Stage 1` (gold `#b58b2a`) — center‑left, three columns: raw inputs / concat & mask / switches & sampler.
+  - `Gemini` (purple `#a1309b`) — center, three columns: prompt source / encoders / output (Gemini & manual).
+  - `Stage 2` (blue) — center‑right.
+  - `Decode` (blue) — right.
+  - `Output` (purple) — far‑right.
+  - Vertical step ~100–150 px between sibling nodes; horizontal column step ~400–500 px.
+
+### Resynced
+- `Lipdub-Gemini-API.json` re‑exported from ComfyUI to match the new layout. Note: Decode group node IDs were renumbered by ComfyUI's exporter (`4848 / 4995 / 5015 → 5073 / 5074 / 5075`); UI workflow retains its own ID space. Both files are internally consistent.
+
+### Aesthetic policy (for future patches)
+- New nodes will be placed **inside the appropriate group bounds** at the next free row of the matching column.
+- New groups require explicit approval before being created.
+- The colour palette (blue = processing, gold = main work, purple = user‑facing surfaces) is preserved.
+
 ## [1.7.0] — 2026‑05‑14
 
 ### Added
